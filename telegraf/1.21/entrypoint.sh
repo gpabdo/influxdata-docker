@@ -1,6 +1,11 @@
 #!/bin/bash
 set -e
 
+if [ -n "$PACKAGES" ]; then
+  apt-get update
+  apt-get install -y $PACKAGES
+fi
+
 if [ "${1:0:1}" = '-' ]; then
     set -- telegraf "$@"
 fi
